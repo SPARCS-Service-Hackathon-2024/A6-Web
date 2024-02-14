@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import PlantRegisterImage from "./pages/PlantRegisterImage";
 import { useEffect } from "react";
 import PlantRegisterType from "./pages/PlantRegisterType";
+import PlantRegisterNickname from "./pages/PlantRegisterNickname";
 
 function App() {
     function setScreenSize() {
@@ -18,7 +19,10 @@ function App() {
                 <Route path="/plant/register">
                     <Route path="image" element={<PlantRegisterImage />} />
                     <Route path="type" element={<PlantRegisterType />} />
-                    <Route path="nickname" element={<div>Nickname</div>} />
+                    <Route
+                        path="nickname"
+                        element={<PlantRegisterNickname />}
+                    />
                     <Route path="start" element={<div>Start Date</div>} />
                     <Route path="watered" element={<div>Last Watered</div>} />
                     <Route path="check" element={<div>Check Info</div>} />
