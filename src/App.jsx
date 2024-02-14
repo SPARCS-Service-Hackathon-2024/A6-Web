@@ -1,16 +1,24 @@
 import { Route, Routes } from "react-router-dom";
+import PlantRegisterImage from "./pages/PlantRegisterImage";
 
 function App() {
     return (
-        <Routes>
-            <Route path="/plant/register/image" element={<div />} />
-            <Route path="/plant/register/type" element={<div />} />
-            <Route path="/plant/register/nickname" element={<div />} />
-            <Route path="/plant/register/start" element={<div />} />
-            <Route path="/plant/register/watered" element={<div />} />
-            <Route path="/plant/register/check" element={<div />} />
-            <Route path="/plant/register/complete" element={<div />} />
-        </Routes>
+        <div>
+            <Routes>
+                <Route path="/plant/register">
+                    <Route path="image" element={<PlantRegisterImage />} />
+                    <Route path="type" element={<div>Plant Type</div>} />
+                    <Route path="nickname" element={<div>Nickname</div>} />
+                    <Route path="start" element={<div>Start Date</div>} />
+                    <Route path="watered" element={<div>Last Watered</div>} />
+                    <Route path="check" element={<div>Check Info</div>} />
+                    <Route
+                        path="complete"
+                        element={<div>Registration Complete</div>}
+                    />
+                </Route>
+            </Routes>
+        </div>
     );
 }
 
