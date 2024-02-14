@@ -2,7 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+@layer utilities {
+    .h-screen-custom {
+        height: calc(var(--vh, 1vh) * 100);
+    }
+}
+
+:root {
+    --vh: 100%;
+}
+
+body,
+html {
     margin: 0;
     background: #f6f6f6;
 }

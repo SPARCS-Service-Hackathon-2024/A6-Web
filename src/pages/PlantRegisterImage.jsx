@@ -38,7 +38,7 @@ function PlantRegisterImage() {
     };
 
     return (
-        <div className="w-full h-screen flex flex-col relative">
+        <div className="w-full h-screen-custom flex flex-col relative">
             <div className=" mt-3 ml-4 text-[22px]">
                 어떤 작물을 키우시나요?
             </div>
