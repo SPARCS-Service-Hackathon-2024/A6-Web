@@ -20,10 +20,6 @@ function PlantRegisterImage() {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setPreview(reader.result);
-                setPlantRegister((prevState) => ({
-                    ...prevState,
-                    main_image: reader.result,
-                }));
             };
             reader.readAsDataURL(file);
         }
@@ -34,6 +30,14 @@ function PlantRegisterImage() {
     };
 
     const handleNextButtonClick = () => {
+        if (!preview) {
+            alert("이미지를 업로드해주세요.");
+            return;
+        }
+        setPlantRegister((prevState) => ({
+            ...prevState,
+            main_image: preview,
+        }));
         navigate("/plant/register/type");
     };
 
@@ -71,14 +75,12 @@ function PlantRegisterImage() {
                     />
                 </div>
             </div>
-            <div className="flex justify-center">
-                <button
-                    className="btn btn-wide rounded-2xl border-none bg-[#7FBA76] text-white text w-[363px] h-[54px]  absolute bottom-10"
-                    onClick={handleNextButtonClick}
-                >
-                    다음으로
-                </button>
-            </div>
+            <button
+                className="btn rounded-2xl border-none bg-[#7FBA76] text-white text-[22px] w-[363px] h-[54px] fixed bottom-10 left-1/2 transform -translate-x-1/2"
+                onClick={handleNextButtonClick}
+            >
+                다음으로
+            </button>
         </div>
     );
 }
