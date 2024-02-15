@@ -35,10 +35,6 @@ function PlantRegisterImage() {
     };
 
     const handleNextButtonClick = () => {
-        setPlantRegister((prevState) => ({
-            ...prevState,
-            main_image: preview,
-        }));
         navigate("/plant/register/type");
     };
 

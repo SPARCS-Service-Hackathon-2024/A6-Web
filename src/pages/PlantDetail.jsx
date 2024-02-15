@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { useRecoilState } from "recoil";
 import { plantDetailState } from "../recoil/atoms/plantDetailState";
-// import axios from "axios";
+import axios from "axios";
 import { useEffect } from "react";
 import 상추 from "../assets/상추.png";
 
@@ -11,13 +11,12 @@ function PlantDetail() {
     const [plantDetail, setPlantDetail] = useRecoilState(plantDetailState);
 
     useEffect(() => {
-        // 서버로부터 식물 상세 정보 가져오기
         const fetchPlantDetail = async () => {
             try {
-                // const response = await axios.get(
-                //     `https://trothly.com/plant/${id}`
-                // );
-                // setPlantDetail(response.data); // 가져온 데이터를 Recoil 상태에 저장
+                const response = await axios.get(
+                    `https://trothly.com/plant/${id}`
+                );
+                setPlantDetail(response.data);
                 setPlantDetail({
                     id: 1,
                     nickname: "닉네임",
