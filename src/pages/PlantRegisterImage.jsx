@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { plantRegisterState } from "../recoil/atoms/plantRegisterState";
 import { useRecoilState } from "recoil";
 
@@ -9,10 +9,19 @@ function PlantRegisterImage() {
     const [plantRegister, setPlantRegister] =
         useRecoilState(plantRegisterState);
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const token = queryParams.get("token");
+        if (token) {
+            setPlantRegister((prevState) => ({
+                ...prevState,
+                access_token: token,
+            }));
+        }
         console.log(plantRegister);
-    }, [plantRegister]);
+    }, []);
 
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
@@ -35,10 +44,6 @@ function PlantRegisterImage() {
     };
 
     const handleNextButtonClick = () => {
-        setPlantRegister((prevState) => ({
-            ...prevState,
-            main_image_url: preview,
-        }));
         navigate("/plant/register/type");
     };
 

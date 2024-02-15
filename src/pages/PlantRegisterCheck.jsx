@@ -40,8 +40,7 @@ function PlantRegisterCheck() {
                 {
                     headers: {
                         "Content-Type": "multipart/form-data",
-                        Authorization:
-                            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDgwMjA3NDYsInVzZXJfaWQiOjV9.LGE0J-IcdEY5ugNn8_KQmEmCps8MIuugkt_q6OocZOU",
+                        Authorization: `Bearer ${plantRegister.access_token}`,
                     },
                 }
             );

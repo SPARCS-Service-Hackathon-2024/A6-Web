@@ -11,5 +11,6 @@ export const plantRegisterState = atom({
         start_at: "2024-02-02",
         watered_at: "2024-02-02",
         repotted_at: "2024-02-02",
+        access_token: "",
     },
 });
