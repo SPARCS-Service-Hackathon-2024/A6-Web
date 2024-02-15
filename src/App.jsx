@@ -3,6 +3,7 @@ import PlantRegisterImage from "./pages/PlantRegisterImage";
 import { useEffect } from "react";
 import PlantRegisterType from "./pages/PlantRegisterType";
 import PlantRegisterNickname from "./pages/PlantRegisterNickname";
+import PlantRegisterStart from "./pages/PlantRegisterStart";
 
 function App() {
     function setScreenSize() {
@@ -23,7 +24,7 @@ function App() {
                         path="nickname"
                         element={<PlantRegisterNickname />}
                     />
-                    <Route path="start" element={<div>Start Date</div>} />
+                    <Route path="start" element={<PlantRegisterStart />} />
                     <Route path="watered" element={<div>Last Watered</div>} />
                     <Route path="check" element={<div>Check Info</div>} />
                     <Route
