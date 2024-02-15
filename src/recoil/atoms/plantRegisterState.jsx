@@ -4,6 +4,7 @@ export const plantRegisterState = atom({
     key: "plantRegisterState",
     default: {
         main_image: null,
+        main_image_url: null,
         plant_type: 1,
         plant_type_name: "상추",
         nickname: "nickname",

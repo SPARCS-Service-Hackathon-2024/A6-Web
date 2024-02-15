@@ -66,7 +66,7 @@ function PlantDetail() {
     return (
         <div className="w-full h-screen-custom flex flex-col relative">
             <img src={상추} alt="상추" className="w-full h-auto" />
-            <div className="text-[22px] mb-3">이렇게 등록할게요!</div>
+            <div className="text-[22px] mb-3">{plantDetail.nickname}</div>
             <div className="px-4 pb-4 fixed bottom-0 left-0 right-0 flex flex-col items-center gap-2"></div>
         </div>
     );

@@ -1,6 +1,5 @@
 import { useRecoilState } from "recoil";
 import { plantRegisterState } from "../recoil/atoms/plantRegisterState";
-// import 상추 from "../assets/상추.png";
 function PlantCard() {
     const [plantRegister] = useRecoilState(plantRegisterState);
 
@@ -23,8 +22,7 @@ function PlantCard() {
     return (
         <div className="w-full h-[120px] p-[12px]  bg-white rounded-2xl flex">
             <img
-                src={plantRegister.main_image}
-                // src={상추}
+                src={plantRegister.main_image_url}
                 className="w-[100px] h-[100px] object-cover rounded-2xl mr-2"
             />
             <div className="flex flex-col">
@@ -48,7 +46,7 @@ function PlantCard() {
                         물 줌
                     </div>
                     <div className="rounded-full text-xs px-2 py-1 flex items-center text-[#FFB23E] bg-[#FFB23E33]">
-                        {calculateDaysSinceStart(plantRegister.repotted_at)}일
+                        {calculateDaysSinceStart(plantRegister.repotted_at)} 일
                         전 분갈이 함
                     </div>
                 </div>

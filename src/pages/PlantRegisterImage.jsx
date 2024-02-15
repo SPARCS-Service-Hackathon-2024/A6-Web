@@ -20,13 +20,13 @@ function PlantRegisterImage() {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setPreview(reader.result);
+                setPlantRegister((prevState) => ({
+                    ...prevState,
+                    main_image: file,
+                    main_image_url: reader.result,
+                }));
             };
             reader.readAsDataURL(file);
-
-            setPlantRegister((prevState) => ({
-                ...prevState,
-                main_image: file,
-            }));
         }
     };
 
@@ -35,6 +35,10 @@ function PlantRegisterImage() {
     };
 
     const handleNextButtonClick = () => {
+        setPlantRegister((prevState) => ({
+            ...prevState,
+            main_image_url: preview,
+        }));
         navigate("/plant/register/type");
     };
 
