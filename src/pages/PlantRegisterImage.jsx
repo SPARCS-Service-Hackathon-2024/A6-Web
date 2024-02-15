@@ -40,13 +40,7 @@ function PlantRegisterImage() {
     };
 
     const handleButtonClick = () => {
-        if (window.Android) {
-            window.Android.openGallery();
-            fileInputRef.current.click();
-        } else {
-            // 안드로이드 환경이 아닌 경우, 기존의 파일 입력 방식 사용
-            fileInputRef.current.click();
-        }
+        fileInputRef.current.click();
     };
 
     const handleNextButtonClick = () => {
