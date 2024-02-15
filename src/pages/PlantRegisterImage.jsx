@@ -4,7 +4,7 @@ import { plantRegisterState } from "../recoil/atoms/plantRegisterState";
 import { useRecoilState } from "recoil";
 
 function PlantRegisterImage() {
-    const [preview, setPreview] = useState();
+    const [preview, setPreview] = useState(null);
     const fileInputRef = useRef();
     const [plantRegister, setPlantRegister] =
         useRecoilState(plantRegisterState);
@@ -30,10 +30,6 @@ function PlantRegisterImage() {
     };
 
     const handleNextButtonClick = () => {
-        if (!preview) {
-            alert("이미지를 업로드해주세요.");
-            return;
-        }
         setPlantRegister((prevState) => ({
             ...prevState,
             main_image: preview,
@@ -75,12 +71,16 @@ function PlantRegisterImage() {
                     />
                 </div>
             </div>
-            <button
-                className="btn rounded-2xl border-none bg-[#7FBA76] text-white text-[22px] w-[363px] h-[54px] fixed bottom-10 left-1/2 transform -translate-x-1/2"
-                onClick={handleNextButtonClick}
-            >
-                다음으로
-            </button>
+            <div className="px-4 pb-4 fixed bottom-0 left-0 right-0 flex flex-col items-center gap-2">
+                <button
+                    className={`btn rounded-2xl border-none text-[22px] font-medium w-full max-w-[363px] h-[54px] 
+                        bg-[#7FBA76] text-white
+                    `}
+                    onClick={handleNextButtonClick}
+                >
+                    다음으로
+                </button>
+            </div>
         </div>
     );
 }

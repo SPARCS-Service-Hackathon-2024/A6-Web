@@ -5,6 +5,7 @@ export const plantRegisterState = atom({
     default: {
         main_image: null,
         plant_type: 1,
+        plant_type_name: "상추",
         nickname: "nickname",
         start_at: "2024-02-02",
         watered_at: "2024-02-02",

@@ -4,6 +4,11 @@ import { useEffect } from "react";
 import PlantRegisterType from "./pages/PlantRegisterType";
 import PlantRegisterNickname from "./pages/PlantRegisterNickname";
 import PlantRegisterStart from "./pages/PlantRegisterStart";
+import PlantRegisterWatered from "./pages/PlantRegisterWatered";
+import PlantRegisterRepotted from "./pages/PlantRegisterRepotted";
+import PlantRegisterCheck from "./pages/PlantRegisterCheck";
+import PlantRegisterComplete from "./pages/PlantRegisterComplete";
+import PlantDetail from "./pages/PlantDetail";
 
 function App() {
     function setScreenSize() {
@@ -25,13 +30,18 @@ function App() {
                         element={<PlantRegisterNickname />}
                     />
                     <Route path="start" element={<PlantRegisterStart />} />
-                    <Route path="watered" element={<div>Last Watered</div>} />
-                    <Route path="check" element={<div>Check Info</div>} />
+                    <Route path="watered" element={<PlantRegisterWatered />} />
+                    <Route
+                        path="repotted"
+                        element={<PlantRegisterRepotted />}
+                    />
+                    <Route path="check" element={<PlantRegisterCheck />} />
                     <Route
                         path="complete"
-                        element={<div>Registration Complete</div>}
+                        element={<PlantRegisterComplete />}
                     />
                 </Route>
+                <Route path="/plant/detail/:id" element={<PlantDetail />} />
             </Routes>
         </div>
     );

@@ -17,6 +17,10 @@ function PlantRegisterNickname() {
         navigate("/plant/register/start");
     };
 
+    const handlePassButtonClick = () => {
+        navigate("/plant/register/start");
+    };
+
     const handleInputChange = (e) => {
         if (e.target.value.length <= 30) {
             setPlantNickname(e.target.value);
@@ -43,12 +47,25 @@ function PlantRegisterNickname() {
                 <div className="text-right mt-2">{`${plantNickname.length}/30`}</div>
             </div>
 
-            <button
-                className="btn rounded-2xl border-none bg-[#7FBA76] text-white text-[22px] w-[363px] h-[54px] fixed bottom-10 left-1/2 transform -translate-x-1/2"
-                onClick={handleNextButtonClick}
-            >
-                다음으로
-            </button>
+            <div className="px-4 pb-4 fixed bottom-0 left-0 right-0 flex flex-col items-center gap-2">
+                <button
+                    className="btn rounded-2xl border-none bg-transparent text-primaryTextColor text-[22px] font-medium w-full max-w-[363px] h-[54px]"
+                    onClick={handlePassButtonClick}
+                >
+                    건너뛰기
+                </button>
+                <button
+                    className={`btn rounded-2xl border-none text-[22px] font-medium w-full max-w-[363px] h-[54px] ${
+                        plantNickname
+                            ? "bg-[#7FBA76] text-white"
+                            : "bg-[#A3A3A3]"
+                    }`}
+                    onClick={plantNickname ? handleNextButtonClick : undefined}
+                    disabled={!plantNickname}
+                >
+                    다음으로
+                </button>
+            </div>
         </div>
     );
 }

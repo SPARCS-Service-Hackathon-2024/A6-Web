@@ -17,92 +17,10 @@ function PlantRegisterType() {
         const fetchPlantTypes = async () => {
             try {
                 const response = await axios.get(
-                    "http://54.180.204.64/plant/type"
+                    "https://trothly.com/plant/type"
                 );
+                console.log(response.data.data);
                 setPlantTypes(response.data.data); // API 응답에서 식물 타입 데이터를 저장
-                // setPlantTypes([
-                //     {
-                //         id: 1,
-                //         main_image:
-                //             "media/plant_types/c26a41adfc5e472b80a778f3918ad8e7.png",
-                //         created_at: "2024-02-14T09:10:37.651566",
-                //         updated_at: "2024-02-14T09:10:37.655118",
-                //         name: "상추",
-                //         watering_cycle: 3,
-                //         repotting_cycle: 14,
-                //     },
-                //     {
-                //         id: 2,
-                //         main_image:
-                //             "media/plant_types/c26a41adfc5e472b80a778f3918ad8e7.png",
-                //         created_at: "2024-02-14T09:10:37.651566",
-                //         updated_at: "2024-02-14T09:10:37.655118",
-                //         name: "상추",
-                //         watering_cycle: 3,
-                //         repotting_cycle: 14,
-                //     },
-                //     {
-                //         id: 3,
-                //         main_image:
-                //             "media/plant_types/c26a41adfc5e472b80a778f3918ad8e7.png",
-                //         created_at: "2024-02-14T09:10:37.651566",
-                //         updated_at: "2024-02-14T09:10:37.655118",
-                //         name: "상추",
-                //         watering_cycle: 3,
-                //         repotting_cycle: 14,
-                //     },
-
-                //     {
-                //         id: 4,
-                //         main_image:
-                //             "media/plant_types/c26a41adfc5e472b80a778f3918ad8e7.png",
-                //         created_at: "2024-02-14T09:10:37.651566",
-                //         updated_at: "2024-02-14T09:10:37.655118",
-                //         name: "상추",
-                //         watering_cycle: 3,
-                //         repotting_cycle: 14,
-                //     },
-                //     {
-                //         id: 5,
-                //         main_image:
-                //             "media/plant_types/c26a41adfc5e472b80a778f3918ad8e7.png",
-                //         created_at: "2024-02-14T09:10:37.651566",
-                //         updated_at: "2024-02-14T09:10:37.655118",
-                //         name: "상추",
-                //         watering_cycle: 3,
-                //         repotting_cycle: 14,
-                //     },
-                //     {
-                //         id: 6,
-                //         main_image:
-                //             "media/plant_types/c26a41adfc5e472b80a778f3918ad8e7.png",
-                //         created_at: "2024-02-14T09:10:37.651566",
-                //         updated_at: "2024-02-14T09:10:37.655118",
-                //         name: "상추",
-                //         watering_cycle: 3,
-                //         repotting_cycle: 14,
-                //     },
-                //     {
-                //         id: 7,
-                //         main_image:
-                //             "media/plant_types/c26a41adfc5e472b80a778f3918ad8e7.png",
-                //         created_at: "2024-02-14T09:10:37.651566",
-                //         updated_at: "2024-02-14T09:10:37.655118",
-                //         name: "상추",
-                //         watering_cycle: 3,
-                //         repotting_cycle: 14,
-                //     },
-                //     {
-                //         id: 8,
-                //         main_image:
-                //             "media/plant_types/c26a41adfc5e472b80a778f3918ad8e7.png",
-                //         created_at: "2024-02-14T09:10:37.651566",
-                //         updated_at: "2024-02-14T09:10:37.655118",
-                //         name: "상추",
-                //         watering_cycle: 3,
-                //         repotting_cycle: 14,
-                //     },
-                // ]);
             } catch (error) {
                 console.error(
                     "식물 타입 데이터를 가져오는데 실패했습니다.",
@@ -123,6 +41,7 @@ function PlantRegisterType() {
         setPlantRegister((prevState) => ({
             ...prevState,
             plant_type: id,
+            plant_type_name: plantTypes.find((plant) => plant.id === id).name,
         }));
     };
 
@@ -180,12 +99,21 @@ function PlantRegisterType() {
                     ))}
                 </div>
             </div>
-            <button
-                className="btn rounded-2xl border-none bg-[#7FBA76] text-white text-[22px] w-[363px] h-[54px] fixed bottom-10 left-1/2 transform -translate-x-1/2"
-                onClick={handleNextButtonClick}
-            >
-                다음으로
-            </button>
+            <div className="px-4 pb-4 fixed bottom-0 left-0 right-0 flex flex-col items-center gap-2">
+                <button
+                    className={`btn rounded-2xl border-none text-[22px] font-medium w-full max-w-[363px] h-[54px] ${
+                        selectedPlantType
+                            ? "bg-[#7FBA76] text-white"
+                            : "bg-[#A3A3A3]"
+                    }`}
+                    onClick={
+                        selectedPlantType ? handleNextButtonClick : undefined
+                    }
+                    disabled={!selectedPlantType}
+                >
+                    다음으로
+                </button>
+            </div>
         </div>
     );
 }
