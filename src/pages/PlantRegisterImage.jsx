@@ -22,6 +22,11 @@ function PlantRegisterImage() {
                 setPreview(reader.result);
             };
             reader.readAsDataURL(file);
+
+            setPlantRegister((prevState) => ({
+                ...prevState,
+                main_image: file,
+            }));
         }
     };
 

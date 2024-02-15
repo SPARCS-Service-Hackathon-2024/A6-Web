@@ -22,7 +22,7 @@ function PlantRegisterCheck() {
 
     const handleNextButtonClick = async () => {
         const formData = new FormData();
-        formData.append("main_image", plantRegister.main_image);
+        // formData.append("main_image", plantRegister.main_image);
         formData.append("plant_type", plantRegister.plant_type);
         formData.append("nickname", plantRegister.nickname);
         formData.append("start_at", plantRegister.start_at);
