@@ -19,6 +19,10 @@ function Diary() {
     const [imagePreview, setImagePreview] = useState(null);
     const [, setShowModal] = useRecoilState(diaryModalState);
 
+    const handleButtonClick = () => {
+        fileInputRef.current.click();
+    };
+
     useEffect(() => {
         console.log(postDiary);
     }, [postDiary, title, content, imagePreview]);
@@ -27,15 +31,9 @@ function Diary() {
         setPostDiary((prevState) => ({
             ...prevState,
             title: title,
-        }));
-    }, [title, setPostDiary]);
-
-    useEffect(() => {
-        setPostDiary((prevState) => ({
-            ...prevState,
             description: content,
         }));
-    }, [content, setPostDiary]);
+    }, [title, content, setPostDiary]);
 
     const handleSubmit = async () => {
         const formData = new FormData();
@@ -44,8 +42,8 @@ function Diary() {
         formData.append("description", postDiary.description);
         postDiary.plants.forEach((plant) => formData.append("plants", plant));
 
-        if (postDiary.images) {
-            formData.append("images", postDiary.images);
+        if (postDiary.image) {
+            formData.append("image", postDiary.image);
         }
 
         try {
@@ -68,13 +66,14 @@ function Diary() {
 
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
-        if (file && file.type.startsWith("image/")) {
+        if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreview(reader.result);
                 setPostDiary((prevState) => ({
                     ...prevState,
-                    images: file,
+                    image_url: reader.result,
+                    image: file,
                 }));
             };
             reader.readAsDataURL(file);
@@ -231,7 +230,7 @@ function Diary() {
                 )}
                 <button
                     className="btn ml-2 w-[80px] h-[80px] rounded-2xl text-3xl bg-white text-primaryTextColor"
-                    onClick={() => fileInputRef.current.click()}
+                    onClick={handleButtonClick}
                 >
                     +
                 </button>

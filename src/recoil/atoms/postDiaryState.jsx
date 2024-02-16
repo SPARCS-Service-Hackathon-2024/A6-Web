@@ -7,6 +7,7 @@ export const postDiaryState = atom({
         loacation: "옥상", // "베란다" or "옥상"
         description: "",
         plants: [],
-        images: null,
+        image: null,
+        image_url: null,
     },
 });
