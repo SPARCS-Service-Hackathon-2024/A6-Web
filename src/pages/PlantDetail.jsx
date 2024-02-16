@@ -319,14 +319,14 @@ function PlantDetail() {
                                 </div>
                                 <div className="flex items-center">
                                     <SunlightSVG />
-                                    <div className="rounded-full bg-white flex justify-center text-[#FF5454] items-center px-4 h-[37px] text-[12px]">
+                                    <div className="rounded-full ml-2 bg-white flex justify-center text-[#FF5454] items-center px-4 h-[37px] text-[12px]">
                                         {" "}
                                         {plantTypeInfo?.sunlight}
                                     </div>
                                 </div>
                                 <div className="flex items-center">
                                     <TemperatureSVG />
-                                    <div className="rounded-full bg-white text-[#FFB23E] flex justify-center items-center px-4 h-[37px] text-[12px]">
+                                    <div className="rounded-full ml-2 bg-white text-[#FFB23E] flex justify-center items-center px-4 h-[37px] text-[12px]">
                                         {" "}
                                         {plantTypeInfo?.temperature}
                                     </div>{" "}
