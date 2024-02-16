@@ -5,6 +5,7 @@ import { farmInfoState } from "../recoil/atoms/farmInfoState";
 import { plantDetailState } from "../recoil/atoms/plantDetailState";
 import { postDiaryState } from "../recoil/atoms/postDiaryState";
 import { diaryModalState } from "../recoil/atoms/diaryModalState";
+import 상추 from "../assets/상추.png";
 
 function Diary() {
     const [farmInfo, setFarmInfo] = useRecoilState(farmInfoState);
@@ -23,6 +24,17 @@ function Diary() {
     };
 
     useEffect(() => {
+        const filteredPlants = farmInfo.plants.filter(
+            (plant) => plant.is_selected
+        );
+
+        const plantTypes = filteredPlants.map((plant) => plant.plant_type_name);
+        const uniquePlantTypes = [...new Set(plantTypes)];
+
+        setUniquePlantTypes(uniquePlantTypes);
+    }, [farmInfo.plants]);
+
+    useEffect(() => {
         console.log(postDiary);
     }, [postDiary, title, content, imagePreview]);
 
@@ -39,7 +51,7 @@ function Diary() {
         formData.append("title", postDiary.title);
         formData.append("location", postDiary.location);
         formData.append("description", postDiary.description);
-        postDiary.plants.forEach((plant) => formData.append("plants", plant));
+        formData.append("plants", JSON.stringify(postDiary.plants));
 
         if (postDiary.image) {
             formData.append("image", postDiary.image);
@@ -97,26 +109,8 @@ function Diary() {
                 : plant
         );
         setFarmInfo({ ...farmInfo, plants: updatedPlants });
-        setPostDiary((prevState) => ({
-            ...prevState,
-            plants: updatedPlants
-                .filter((plant) => plant.is_selected)
-                .map((plant) => plant.id),
-        }));
-        toggleDropdown();
+        setShowDropdown(!showDropdown);
     };
-
-    useEffect(() => {
-        const selectedPlantIds = farmInfo.plants
-            .filter((plant) => plant.is_selected)
-            .map((plant) => plant.id);
-
-        setPostDiary((prevState) => ({
-            ...prevState,
-            plants: selectedPlantIds,
-        }));
-        console.log("postDiary:", postDiary);
-    }, [farmInfo, setPostDiary]);
 
     const fetchFarmInfo = async () => {
         try {
@@ -129,8 +123,15 @@ function Diary() {
                 }
             );
             console.log(response.data);
-            setFarmInfo(response.data);
-            const plantTypes = response.data.plants.map(
+
+            const updatedPlants = response.data.plants.map((plant) => ({
+                ...plant,
+                main_image: plant.main_image || 상추, // main_image가 없으면 기본 이미지로 설정
+            }));
+
+            setFarmInfo({ ...response.data, plants: updatedPlants });
+
+            const plantTypes = updatedPlants.map(
                 (plant) => plant.plant_type_name
             );
             const uniqueTypes = [...new Set(plantTypes)];
@@ -275,8 +276,8 @@ function PlantCard({ plant }) {
     return (
         <div className="w-full h-[120px] p-[12px] bg-white my-2 rounded-2xl flex">
             <img
-                src={`${BASE_URL}${plant.main_image}`}
-                className="w-[100px] h-[100px] object-cover rounded-2xl mr-2"
+                src={plant.main_image ? `${BASE_URL}${plant.main_image}` : 상추}
+                className="w-[90px] h-[90px] object-cover rounded-2xl mr-2"
             />
             <div className="flex flex-col">
                 <div className="flex">
@@ -291,7 +292,7 @@ function PlantCard({ plant }) {
                 <div className=" text-base text-primaryTextColor">
                     키운지 {calculateDaysSinceStart(plant.start_at)}일 째
                 </div>
-                <div className="flex gap-1 mt-5">
+                <div className="flex gap-1 mt-3">
                     {" "}
                     <div className="rounded-full text-[10px] px-2 py-1 flex items-center text-[#3C82D3] bg-[#3C82D333]">
                         {calculateDaysSinceStart(plant.last_watered_at)}일 전 물
