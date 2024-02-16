@@ -4,10 +4,12 @@ export default {
     theme: {
         extend: {
             colors: {
+                primaryColor: "#7FBA76",
                 primaryBgColor: "#7FBA76",
                 primaryTextColor: "#7FBA76",
                 secondBgColor: "#1AA873",
                 secondTextColor: "#1AA873",
+                primaryCheckboxColor: "#7FBA76",
             },
         },
     },

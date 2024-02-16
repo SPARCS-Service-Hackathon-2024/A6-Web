@@ -1,6 +1,8 @@
 import { useRecoilState } from "recoil";
 import { plantRegisterState } from "../recoil/atoms/plantRegisterState";
+import { farmInfoState } from "../recoil/atoms/farmInfoState";
 function PlantCard() {
+    const [farmInfo] = useRecoilState(farmInfoState);
     const [plantRegister] = useRecoilState(plantRegisterState);
 
     const calculateDaysSinceStart = (startAt) => {
@@ -36,17 +38,16 @@ function PlantCard() {
                     </div>
                 </div>{" "}
                 <div className=" text-base text-primaryTextColor">
-                    키운지 {calculateDaysSinceStart(plantRegister.start_at)}일
-                    째
+                    키운지 {calculateDaysSinceStart(farmInfo.start_at)}일 째
                 </div>
                 <div className="flex gap-1 mt-5">
                     {" "}
                     <div className="rounded-full text-xs px-2 py-1 flex items-center text-[#3C82D3] bg-[#3C82D333]">
-                        {calculateDaysSinceStart(plantRegister.watered_at)}일 전
+                        {calculateDaysSinceStart(farmInfo.last_watered_at)}일 전
                         물 줌
                     </div>
                     <div className="rounded-full text-xs px-2 py-1 flex items-center text-[#FFB23E] bg-[#FFB23E33]">
-                        {calculateDaysSinceStart(plantRegister.repotted_at)} 일
+                        {calculateDaysSinceStart(farmInfo.last_repotted_at)} 일
                         전 분갈이 함
                     </div>
                 </div>

@@ -8,6 +8,7 @@ export const plantDetailState = atom({
         main_image: null,
         start_at: "2024-02-02",
         plant_type_name: "상추",
+        access_token: "",
         todos: [
             {
                 id: 8,
