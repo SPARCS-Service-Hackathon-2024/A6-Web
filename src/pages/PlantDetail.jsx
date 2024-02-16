@@ -319,35 +319,35 @@ function PlantDetail() {
                                 </div>
                                 <div className="flex items-center">
                                     <SunlightSVG />
-                                    <div className="rounded-full bg-white flex justify-center text-[#FF5454] items-center px-4 h-[37px] text-[14px]">
+                                    <div className="rounded-full bg-white flex justify-center text-[#FF5454] items-center px-4 h-[37px] text-[12px]">
                                         {" "}
                                         {plantTypeInfo?.sunlight}
                                     </div>
                                 </div>
                                 <div className="flex items-center">
                                     <TemperatureSVG />
-                                    <div className="rounded-full bg-white text-[#FFB23E] flex justify-center items-center px-4 h-[37px] text-[14px]">
+                                    <div className="rounded-full bg-white text-[#FFB23E] flex justify-center items-center px-4 h-[37px] text-[12px]">
                                         {" "}
                                         {plantTypeInfo?.temperature}
                                     </div>{" "}
                                 </div>
                                 <div className="flex items-center">
                                     <HumiditySVG />
-                                    <div className="rounded-full text-[#6DA0DB] bg-white flex justify-center items-center px-4 h-[37px] text-[14px]">
+                                    <div className="rounded-full text-[#6DA0DB] bg-white flex justify-center items-center px-4 h-[37px] text-[12px]">
                                         {" "}
                                         {plantTypeInfo?.humidity}
                                     </div>{" "}
                                 </div>
                                 <div className="flex items-center">
                                     <WaterSVG />
-                                    <div className="rounded-full text-[#3C82D3] bg-white flex justify-center items-center px-4 h-[37px] text-[14px]">
+                                    <div className="rounded-full text-[#3C82D3] bg-white flex justify-center items-center px-4 h-[37px] text-[12px]">
                                         {" "}
                                         {plantTypeInfo?.watering_method}
                                     </div>{" "}
                                 </div>
                                 <div className="flex items-center">
                                     <FlowerSVG />
-                                    <div className="rounded-full text-[#F365FF] bg-white flex justify-center items-center px-4 h-[37px] text-[14px]">
+                                    <div className="rounded-full text-[#F365FF] bg-white flex justify-center items-center px-4 h-[37px] text-[12px]">
                                         {" "}
                                         {plantTypeInfo?.blooming_season}
                                     </div>{" "}
