@@ -109,9 +109,17 @@ function Diary() {
                 : plant
         );
         setFarmInfo({ ...farmInfo, plants: updatedPlants });
+
+        const selectedPlantIds = updatedPlants
+            .filter((plant) => plant.is_selected)
+            .map((plant) => plant.id);
+        setPostDiary((prevState) => ({
+            ...prevState,
+            plants: selectedPlantIds,
+        }));
+
         setShowDropdown(!showDropdown);
     };
-
     const fetchFarmInfo = async () => {
         try {
             const response = await axios.get(
@@ -274,12 +282,12 @@ function PlantCard({ plant }) {
     };
 
     return (
-        <div className="w-full h-[120px] p-[12px] bg-white my-2 rounded-2xl flex">
+        <div className="w-full h-[120px] p-[10px] bg-white my-2 rounded-2xl flex">
             <img
                 src={plant.main_image ? `${BASE_URL}${plant.main_image}` : 상추}
-                className="w-[90px] h-[90px] object-cover rounded-2xl mr-2"
+                className="w-[90px] h-[90px] object-cover rounded-2xl mr-2 mt-1"
             />
-            <div className="flex flex-col">
+            <div className="flex flex-col justify-center">
                 <div className="flex">
                     {" "}
                     <div className=" font-semibold text-lg mr-2">
