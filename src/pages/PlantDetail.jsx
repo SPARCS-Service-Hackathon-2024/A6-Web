@@ -277,7 +277,7 @@ function PlantDetail() {
                     )}
                     <button
                         onClick={openDiaryModal}
-                        className="btn px-6 rounded-full border-none text-base font-normal bg-primaryBgColor text-white"
+                        className="btn px-4 rounded-full border-none text-base font-normal bg-primaryBgColor text-white"
                     >
                         농업 일지 추가하기
                     </button>
@@ -357,7 +357,7 @@ function PlantDetail() {
                     )}
                     <button
                         onClick={openInfoModal}
-                        className="btn px-6 rounded-full border-none text-base font-normal bg-white text-primaryTextColor"
+                        className="btn px-4 rounded-full border-none text-base font-normal bg-white text-primaryTextColor"
                     >
                         작물 정보 확인하기
                     </button>

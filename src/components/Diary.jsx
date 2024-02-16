@@ -4,7 +4,6 @@ import axios from "axios";
 import { farmInfoState } from "../recoil/atoms/farmInfoState";
 import { plantDetailState } from "../recoil/atoms/plantDetailState";
 import { postDiaryState } from "../recoil/atoms/postDiaryState";
-import { set } from "date-fns";
 import { diaryModalState } from "../recoil/atoms/diaryModalState";
 
 function Diary() {

@@ -25,15 +25,15 @@ function PlantCard() {
         <div className="w-full h-[120px] p-[12px]  bg-white rounded-2xl flex">
             <img
                 src={plantRegister.main_image_url}
-                className="w-[100px] h-[100px] object-cover rounded-2xl mr-2"
+                className="w-[80px] h-[80px] object-cover rounded-2xl mr-2"
             />
             <div className="flex flex-col">
                 <div className="flex">
                     {" "}
-                    <div className=" font-semibold text-lg mr-2">
+                    <div className=" font-semibold text-base mr-2">
                         {plantRegister.nickname}
                     </div>
-                    <div className=" font-normal text-lg text-[#A3A3A3]">
+                    <div className=" font-normal text-base text-[#A3A3A3]">
                         {plantRegister.plant_type_name}
                     </div>
                 </div>{" "}
@@ -42,11 +42,11 @@ function PlantCard() {
                 </div>
                 <div className="flex gap-1 mt-5">
                     {" "}
-                    <div className="rounded-full text-xs px-2 py-1 flex items-center text-[#3C82D3] bg-[#3C82D333]">
+                    <div className="rounded-full text-[8px] px-2 py-1 flex items-center text-[#3C82D3] bg-[#3C82D333]">
                         {calculateDaysSinceStart(farmInfo.last_watered_at)}일 전
                         물 줌
                     </div>
-                    <div className="rounded-full text-xs px-2 py-1 flex items-center text-[#FFB23E] bg-[#FFB23E33]">
+                    <div className="rounded-full text-[8px] px-2 py-1 flex items-center text-[#FFB23E] bg-[#FFB23E33]">
                         {calculateDaysSinceStart(farmInfo.last_repotted_at)} 일
                         전 분갈이 함
                     </div>
