@@ -24,6 +24,17 @@ function Diary() {
     };
 
     useEffect(() => {
+        const initialSelectedPlants = farmInfo.plants
+            .filter((plant) => plant.is_selected)
+            .map((plant) => plant.id);
+
+        setPostDiary((prevState) => ({
+            ...prevState,
+            plants: initialSelectedPlants,
+        }));
+    }, [farmInfo.plants, setPostDiary]);
+
+    useEffect(() => {
         const filteredPlants = farmInfo.plants.filter(
             (plant) => plant.is_selected
         );
