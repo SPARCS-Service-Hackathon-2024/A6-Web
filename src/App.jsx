@@ -9,6 +9,7 @@ import PlantRegisterRepotted from "./pages/PlantRegisterRepotted";
 import PlantRegisterCheck from "./pages/PlantRegisterCheck";
 import PlantRegisterComplete from "./pages/PlantRegisterComplete";
 import PlantDetail from "./pages/PlantDetail";
+import PostRegister from "./pages/PostRegister";
 
 function App() {
     function setScreenSize() {
