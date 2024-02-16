@@ -185,11 +185,11 @@ function Diary() {
                 </div>
             </label>
 
-            <div className="flex mb-3 items-center">
+            <div className="flex flex-col mb-3 justify-start">
                 <div className="mr-2">나의 작물</div>
                 <button
                     onClick={toggleDropdown}
-                    className="btn"
+                    className="btn btn-sm w-28 bg-transparent text-primaryTextColor"
                     disabled={
                         !farmInfo.plants.some((plant) => !plant.is_selected)
                     }
@@ -200,7 +200,7 @@ function Diary() {
                 {showDropdown && (
                     <ul className="menu p-2 shadow bg-base-100 rounded-box w-52">
                         {farmInfo.plants
-                            .filter((plant) => !plant.is_selected) // Only show plants that are not selected
+                            .filter((plant) => !plant.is_selected)
                             .map((plant) => (
                                 <li
                                     key={plant.id}
